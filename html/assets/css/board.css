@@ -1,0 +1,126 @@
+/* board_inner 
+    +board_search
+    +board_table
+    +board_pages
+    +board_view
+    +board_btn
+    +board_write
+*/
+.board_inner{}
+
+.board_search{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 120px;
+}
+.board_search .left {
+    width: 40%;
+}
+.board_search .left em {
+    color: red;
+}
+.board_search .right {
+    width: 60%;
+    text-align: right;
+}
+.board_search .right input {
+    border: 0;
+    background-color: var(--color__white);
+    padding: 9px 30px;
+    border-radius: 5px;
+    height: 40px;
+}
+.board_search .right select {
+    border: 0;
+    padding: 11px;
+    border-radius: 5px;
+    height: 40px;
+    width: 90px;
+    vertical-align: -1px;
+}
+.board_table table {
+    margin-top: 10px;
+    margin-bottom: 60px;
+    border-top: 2px solid var(--color__black);
+    border-bottom: 2px solid var(--color__black);
+    text-align: center;
+}
+.board_table table tr:hover{
+    background-color: var(--bg__gray4);
+}
+.board_table table th {
+    background-color: var(--bg__gray2);
+    border-bottom: 1px solid var(--color__black);
+    padding: 15px 5px;
+    font-weight: 500;
+}
+.board_table table td {
+    padding: 15px 5px;
+    border-bottom: 1px solid var(--color__black);
+}
+.board_table table td a:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+}
+.board_pages {
+    margin-bottom: 100px;
+}
+.board_pages ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.board_pages ul li.active a {
+    background-color: var(--color__black);
+    color: var(--color__white);
+}
+.board_pages ul li a {
+    border: 1px solid var(--bg__gray3);
+    padding: 10px 13px;
+    margin-left: -1px;
+}
+.board_pages ul li a:hover{
+    background-color: var(--bg__gray4);
+}
+.board_view {
+    margin-top: 40px;
+    border-top: 2px solid var(--color__black);
+    border-bottom: 2px solid var(--color__black);
+}
+.board_view table td,
+.board_view table th {
+    border-bottom: 1px solid var(--color__black);
+    padding: 15px;
+}
+.board_view table tr:last-child td {
+    height: 500px;
+    vertical-align: top;
+}
+.board_view table th {
+    background-color: var(--bg__gray2);
+}
+.board_btn {
+    margin-top: 20px;
+    text-align: right;
+}
+.board_write {
+    padding: 50px 0 100px;
+}
+.board_write label {
+    width: 100%;
+    font-size: 20px;
+    display: block;
+    margin-bottom: 10px;
+}
+.board_write input {
+    margin-bottom: 50px;
+}
+.board_write textarea {
+    padding: 2em;
+    resize: none;
+}
+.board_write button {
+    float: right;
+    margin-top: 10px;
+}

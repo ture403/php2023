@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 페이지</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- script -->
+    <script defer src="assets/js/common.js"></script>
+
+    <style>
+        .join_agree {
+            padding: 10% 20%;
+        }
+        .scroll > div {
+            border: 1px solid var(--color__black);
+            padding: 20px;
+            overflow-y: scroll;
+            width: 100%;
+            height: 300px;
+            word-break: keep-all;
+            background-color: #D9D9D9;
+        }
+        .scroll input {
+            width:15px; 
+            height: 15px; 
+            vertical-align: -3px;
+        }
+        .scroll > div::-webkit-scrollbar {
+            width: 5px;  /* 스크롤바의 너비 */
+        }
+
+        .scroll > div::-webkit-scrollbar-thumb {
+            height: 5%; /* 스크롤바의 길이 */
+            background: #333d4b; /* 스크롤바의 색상 */
+            
+            border-radius: 10px;
+        }
+
+        .scroll > div::-webkit-scrollbar-track {
+            background: rgba(33, 122, 244, .1);  /*스크롤바 뒷 배경 색상*/
+        }
+    </style>
+</head>
+<body class="gray">
+    <div id="skip">
+        <a href="#header">헤더 영역 바로가기</a>
+        <a href="#main">헤더 영역 바로가기</a>
+        <a href="#footer">헤더 영역 바로가기</a>
+    </div>
+    <!-- skip -->
+
+    <header id="header">
+        <div class="header_inner container">
+            <div class="left">
+                <a href="../index.html" class="star"></a><span class="blind">메인으로</span>
+            </div>
+            <h1 class="logo">
+                <a href="main.html">Developer Blog</a>
+            </h1>
+            <div class="right">
+                <ul>
+                    <li><a href="join.html">회원가입</a></li>
+                </ul>
+            </div>
+        </div>
+        <nav class="nav_inner">
+            <ul>
+                <li><a href="join.html">회원가입</a></li>
+                <li><a href="#">로그인</a></li>
+                <li><a href="#">게시판</a></li>
+                <li><a href="#">블로그</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- header -->
+    
+    <main id="main" class="container">
+        <div class="intro_inner center bmStyle">
+            <div class="intro_images">
+                <!-- <img src="assets/img/intro01.png" alt="소개이미지"> -->
+                <picture>
+                    <source srcset="assets/img/join01.png , assets/img/join01@2x.png 2x, assets/img/join01@3x.png 3x">
+                    <img src="assets/img/intro01.png" alt="소개이미지">
+                </picture>
+            </div>
+            <p class="intro_text">
+                회원가입을 해주시면 다양한 정보를 자유롭게 볼 수 있습니다.
+            </p>
+        </div>
+        <!-- intro_inner -->
+
+        <div class="join_inner">
+            <h2>이용약관</h2>
+            <div class="index">
+                <ul>
+                    <li class="active">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+            <div class="join_agree mt100 ">
+                <div class="scroll mb100">
+                    <div class="mb10">본 약관은 __________(회사명)__(이하 "회사"라 한다)에서 제공하는 서비스(이하 "서비스"라 한다)의 이용조건 및 절차, 회사와 회원간의 권리, 의무, 책임사항 등 기본적인 사항을 규정함을 목적으로 합니다.
+                        <br>
+                        제2조 (용어의 정의)
+                        본 약관에서 사용하는 용어의 정의는 다음과 같습니다.
+                        <br>① "서비스" : 회사가 제공하는 인터넷 서비스를 의미합니다.
+                        <br>② "회원" : 서비스에 접속하여 본 약관에 따라 이용계약을 체결하고 회사가 제공하는 서비스를 이용하는 고객을 의미합니다.
+                        <br>③ "아이디(ID)" : 회원 식별과 서비스 이용을 위하여 회원이 선정하고 회사가 승인하는 문자 또는 숫자의 조합을 의미합니다.
+                        <br>④ "비밀번호" : 회원이 부여 받은 아이디와 일치된 회원임을 확인하고 비밀보호를 위해 회원 자신이 선정한 문자 또는 숫자의 조합을 의미합니다.
+                        <br>
+                        제3조 (약관의 게시 및 개정)
+                        <br>① 회사는 이 약관의 내용을 서비스 화면에 게시합니다.
+                        <br>② 회사는 합리적인 사유가 발생할 경우 약관을 개정할 수 있으며, 개정된 약관은 서비스 화면에 게시함으로써 효력을 발생합니다.
+                        <br>③ 회원은 개정된 약관에 대해 동의하지 않을 권리가 있으며, 개정된 약관의 효력 발생일로부터 15일 이내에 이용계약을 해지할 수 있습니다.
+                        <br>
+                        제4조 (이용계약의 체결 및 해지)
+                        <br>① 서비스 이용계약은 회원이 되고자 하는 자가 약관의 내용에 대해 동의한 후 회사의 이용신청 양식에서 요구하는 사항을 기재하여 이용신청을 한 뒤, 회사가 승인함으로써 체결됩니다.
+                        <br>② 회원은 서비스 이용계약을 해지하고자 할 경우, 회원 본인이 서비스 내 제공하는 메뉴를 이용하여 회사에 해지신청을 해야 합니다.
+                        <br>
+                        제5조 (회원의 아이디 및 비밀번호 관리)
+                        <br>① 아이디와 비밀번호에 관한 모든 관리책임은 회원에게 있습니다.
+                        <br>② 회원은 아이디 및 비밀번호를 제3자에게 이용하게 해서는 안 됩니다. 
+                    </div>
+                    <input type="checkbox" id="agreeCheck1" name="agreeCheck1">
+                    <span>개인정보 블로그 이용약관</span>
+                </div>
+                <div class="scroll mb100">
+                    <div class="mb10">제1조 (목적)
+                        본 정책은 __________(회사명)__(이하 "회사"라 한다)에서 제공하는 서비스(이하 "서비스"라 한다)와 관련하여 회원의 개인정보를 수집, 이용하는 것에 대한 회사의 처리방침을 정함을 목적으로 합니다.
+                        <br>
+                        제2조 (수집하는 개인정보 항목 및 수집 방법)
+                        <br>① 회사는 서비스 제공을 위해 필요한 최소한의 개인정보만을 수집합니다.
+                        <br>② 회사는 회원가입, 상담게시판, 이벤트응모 등 서비스 이용 과정에서 아래와 같은 개인정보를 수집합니다.
+                        <br>
+                        수집항목: 이름, 생년월일, 성별, 이메일 주소, 휴대전화번호, 주소, 결제정보
+                        수집방법: 홈페이지, 모바일 어플리케이션, 서면양식, 전화, 이메일, 팩스 등
+                        제3조 (개인정보의 이용 목적)
+                        회사는 수집한 개인정보를 다음과 같은 목적으로 이용합니다.
+                        <br>① 회원가입 및 관리: 회원 식별, 회원제 서비스 제공에 따른 본인 식별, 개인정보 관리 등을 목적으로 개인정보를 이용합니다.
+                        <br>② 서비스 제공: 이메일, 문자메시지, 서비스 이용안내, 고지사항 전달 등의 목적으로 개인정보를 이용합니다.
+                        <br>③ 마케팅 및 광고활동: 신규 서비스, 이벤트 등의 안내 및 마케팅 및 광고에 활용합니다.
+                        <br>
+                        제4조 (개인정보의 보유 및 이용 기간)
+                        <br>① 회사는 회원이 회원자격을 유지하는 동안에 한하여 개인정보를 보유 및 이용합니다.
+                        <br>② 회원이 회원자격을 상실하거나 서비스 이용계약이 종료되는 경우, 회원의 개인정보는 즉시 파기됩니다. 단, 이용계약 해지 등 회원의 요청이 있는 경우에는 지체 없이 파기됩니다.
+                        <br>
+                        제5조 (개인정보의 파기)
+                        회사는 원칙적으로 개인정보의 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 법령의 규정에 의하여 보존할 필요성이 있는 경우에는 보관기간을 다음과 같이 정하며, 그 이후에는 해당 정보를 지체 없이 파기합니다.
+                    </div>
+                    <input type="checkbox" id="agreeCheck2" name="agreeCheck2">
+                    <span>개인정보 수집 및 이용 동의</span>
+                </div>
+                <button href="#" class="btnStyle">동의</button>
+            </div>
+        </div>
+        <!-- join_inner -->
+
+    </main>
+    <!-- main -->
+    
+    <footer id="footer">
+        <div class="footer_inner btStyle  mb100 container">
+            <div>Copyright @ 2023 juneyungi</div>
+            <div>blog by juneyungi</div>
+        </div>
+    </footer>
+    <!-- footer -->
+    <!-- footer -->
+</body>
+</html>
