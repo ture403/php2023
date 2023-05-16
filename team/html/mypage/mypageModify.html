@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 페이지</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .name__wrap > div > p,
+        .age__wrap > div > p {
+            color: #f00;
+            font-size: 12px;
+        }
+        .join__form button {
+            float: right;
+            text-align: center;
+            margin-left: 15px;
+            background-color: #EBFFB3;
+            padding: 15px 35px;
+            border-radius: 10px;
+            font-weight: 500;
+        }
+        .join__inner .title {
+            font-size: 30px;
+            font-weight: 500;
+            margin-top: 100px;
+            margin-bottom: 40px;
+        }
+        .input-file-button{
+            text-align: center;
+            font-size: 20px;
+            font-weight: 400;
+            color: #dfdfdf;
+            cursor: pointer;
+        }
+        .file_img {
+            width: 200px; 
+            height: 200px; 
+            display: block; 
+            margin: auto;
+        }
+        .file_img_desc {
+            text-align: center; 
+            color: #B4B4B4;
+        }
+    </style>
+</head>
+<body>
+    <div id="skip">
+        <a href="#header">헤더 영역 바로가기</a>
+        <a href="#main">컨텐츠 영역 바로가기</a>
+        <a href="#footer">푸터 영역 바로가기</a>
+    </div>
+    <!-- //skip -->
+    <header id="header">
+        <div class="container">
+            <a href="../main/main.html">
+                <img src="../assets/img/logo.png" alt="로고이미지">
+            </a>
+            <ul>
+                <li><a href="#">카테고리</a></li>
+                <li><a href="../board/board.html">요리방</a></li>
+                <li><a href="../login/login.html">로그인</a></li>
+                <li><a href="#">마이페이지</a></li>
+            </ul>
+        </div>
+    </header>
+    <!-- header -->
+    <main id="main" class="container">
+        <div class="join__inner">
+            <h2 class="title">마이페이지(회원정보수정)</h2>
+            <form action="upload.php" method="POST"></form>
+                <label for="file-input">
+                    <img src="../assets/img/User.png" alt="이미지" class="file_img">
+                </label>
+                <input type="file" id="file-input" style="display: none;">
+                <p class="file_img_desc">이미지 변경</p>              
+            </form>
+            <div class="join__form">
+                <form action="#" name="#" method="post">
+                    <fieldset>
+                        <legend class="blind">회원가입 영역</legend>
+                        <div class="name__wrap">
+                            <div class="name">
+                                <label for="youName" class="required">이름</label>
+                                <input type="text" id="youName" name="youName" placeholder="이름을 입력해주세요." class="inputStyle" required>
+                                <p class="namecommet">이름은 수정이 불가능 합니다.</p>
+                            </div>
+                            <div class="nickname">
+                                <label for="nickName" class="required">닉네임</label>
+                                <input type="text" id="nickName" name="nickName" placeholder="사용하실 닉네임을 입력해주세요." class="inputStyle" required>
+                                <p class="nickcommet">닉네임은 수정이 불가능 합니다.</p>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="youID" class="required">아이디</label>
+                            <input type="text" id="youID" name="youID" placeholder="아이디는 숫자와 영어만 입력이 가능합니다." class="inputStyle" required>
+                        </div>
+                        <div>
+                            <label for="youPass" class="required">비밀번호</label>
+                            <input type="password" id="youPass" name="youPass" placeholder="비밀번호를 입력해주세요." class="inputStyle" required>
+                        </div>
+                        <div>
+                            <label for="youPassC" class="required">비밀번호 확인</label>
+                            <input type="password" id="youPassC" name="youPassC" placeholder="비밀번호를 다시한번 입력해주세요." class="inputStyle" required>
+                        </div>
+                        <div>
+                            <label for="youEmail" class="required">이메일</label>
+                            <input type="email" id="youEmail" name="youEmail" placeholder="이메일을 입력해주세요." class="inputStyle" required>
+                        </div>
+                        <div>
+                            <label for="youPhone" class="required">연락처</label>
+                            <input type="text" id="youPhone" name="youPhone" placeholder="연락받으실 번호를 입력해주세요." class="inputStyle" required>
+                        </div>
+                        <div class="age__wrap">
+                            <div class="youage">
+                                <label for="youAge" class="required">연령대</label>
+                                <select name="#" id="#">
+                                    <option value="10s">10 대</option>
+                                    <option value="20s">20 대</option>
+                                    <option value="30s">30 대</option>
+                                    <option value="40s">40 대</option>
+                                    <option value="50s">50 이상</option>
+                                </select>
+                            </div>
+                            <div class="gender">
+                                <label for="youGender" class="required">성별</label>
+                                <select name="#" id="#">
+                                    <option value="woman">여자</option>
+                                    <option value="man">남자</option>
+                                </select>
+                                <p class="nickcommet">성별은 수정이 불가능 합니다.</p>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <button type="submit">수정하기</button>
+                    <button type="submit">탈퇴하기</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <!-- //main -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footlogo">
+                <img src="../assets/img/footlogo.svg" alt="로고이미지">
+            </div>
+            <div class="footcont">
+                <ul>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">고객센터</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">개인정보 처리방침</a></li>
+                </ul>
+                <ul>
+                    <li>주식회사 온리포유</li>
+                    <li>사업자 등록번호 : 00 - 00 - 0000</li>
+                    <li>대표 : 이유나</li>
+                </ul>
+                <ul>
+                    <li>대표번호 : 1588-0000</li>
+                    <li>이메일 : only@for.you</li>
+                    <li>주소 : 대한민국</li>
+                </ul>
+                <strong>copyright &copy; 2023 onlyforyou Inc All right reserved</strong>
+            </div>
+        </div>
+    </footer>
+    <!-- footer -->
+</body>
+</html>

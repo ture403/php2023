@@ -18,5 +18,8 @@
 /* join */
 @import "login.css";
 
-/* notice */
+/* board */
 @import "board.css";
+
+/* blog */
+@import "blog.css";
