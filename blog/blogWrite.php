@@ -1,58 +1,30 @@
+<?php
+    include "../connect/connect.php";
+    include "../connect/session.php";
+?>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP 블로그 만들기</title>
-
-    <!-- css -->
-    <link rel="stylesheet" href="assets/css/style.css">
-
-        <!-- Toast UI Editor -->
-    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+    <title>게시판</title>
+    <!-- <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
     <style>
         :not(.auto-height)>.toastui-editor-defaultUI>.toastui-editor-main {
             background-color: #fff;
         }
-    </style>
-
-    <!-- script -->
-    <script defer src="assets/js/common.js"></script>
+    </style> -->
+    <?php include "../include/head.php"?>
+    <!-- link -->
 </head>
 <body class="gray">
-    <div id="skip">
-        <a href="#header">헤더 영역 바로가기</a>
-        <a href="#main">헤더 영역 바로가기</a>
-        <a href="#footer">헤더 영역 바로가기</a>
-    </div>
+    <?php include "../include/skip.php" ?>
     <!-- skip -->
 
-    <header id="header bmStyle">
-        <div class="header_inner container">
-            <div class="left">
-                <a href="../index.html" class="star"></a><span class="blind">메인으로</span>
-            </div>
-            <h1 class="logo">
-                <a href="main.html">Developer Blog</a>
-            </h1>
-            <div class="right">
-                <ul>
-                    <li><a href="join.html">회원가입</a></li>
-                </ul>
-            </div>
-            <nav class="nav_inner">
-                <ul>
-                    <li><a href="join.html">회원가입</a></li>
-                    <li><a href="login.html">로그인</a></li>
-                    <li><a href="board.html">게시판</a></li>
-                    <li><a href="blog.html">블로그</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <?php include "../include/header.php" ?>
     <!-- header -->
-    
     <main id="main" class="container">
         <div class="blog_search bmStyle">
             <h2>개발자 블로그 게시글 작성</h2>
@@ -60,7 +32,7 @@
         </div>
         <div class="blog_inner">
             <div class="blog_write">
-                <form action="#" name="#" method="post">
+                <form action="blogWriteSave.php" name="blogWriteSave" method="post" enctype="multipart/form-data">
                     <fieldset>
                         <legend class="blind">게시글 작성하기</legend>
                         <div>
@@ -75,12 +47,16 @@
                         </div>
                         <div>
                             <label for="blogTitle">제목</label>
-                            <input type="text" id="blogTitle" name="blogTitle" class="inputStyle">
+                            <input type="text" id="blogTitle" name="blogTitle" class="inputStyle" required>
                         </div>
                         <div>
                             <label for="blogContents">내용</label>
-                            <!-- <textarea name="blogContents" id="blogContents" rows="20" class="inputStyle"></textarea> -->
-                            <div id="editor"></div>
+                            <textarea name="blogContents" id="blogContents" rows="20" class="inputStyle" required></textarea>
+                            <!-- <div id="editor"></div> -->
+                        </div>
+                        <div class="mt30">
+                            <label for="bolgFile">파일</label>
+                            <input type="file" name="blogFile" id="blogFile" accept=".jpg, .jpeg, .png, .gif" placeholder=".jpg, .jpeg, .png, .gif 파일만 넣을 수 있습니다. 이미지 용량은 1MB 넘길 수 없습니다.">
                         </div>
                         <button type="submit" class="btnStyle3">저장하기</button>
                     </fieldset>
@@ -88,17 +64,10 @@
             </div>
         </div>
     </main>
-    <!-- main -->
-    
-    <footer id="footer">
-        <div class="footer_inner btStyle  mb100 container">
-            <div>Copyright @ 2023 juneyungi</div>
-            <div>blog by juneyungi</div>
-        </div>
-    </footer>
+
+    <?php include "../include/footer.php" ?>
     <!-- footer -->
-    <!-- footer -->
-    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+    <!-- <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
     <script>
         const Editor = toastui.Editor;
 
@@ -108,6 +77,7 @@
             initialEditType: 'markdown',
             previewStyle: 'vertical'
             });
-    </script>
+    </script> -->
+
 </body>
 </html>

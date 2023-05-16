@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
 
     <title>Only For You</title>
@@ -230,13 +230,13 @@
 <body>
     <header id="header">
         <div class="container">
-            <a href="../main/main.html">
-                <img src="../assets/img/logo.png" alt="로고이미지">
+            <a href="../../main/main.html">
+                <img src="../../assets/img/logo.png" alt="로고이미지">
             </a>
             <ul>
                 <li><a href="#">카테고리</a></li>
-                <li><a href="../board/board.html">요리방</a></li>
-                <li><a href="../login/login.html">로그인</a></li>
+                <li><a href="../../board/board.html">요리방</a></li>
+                <li><a href="../../login/login.html">로그인</a></li>
                 <li><a href="#">마이페이지</a></li>
             </ul>
         </div>
@@ -249,61 +249,61 @@
                     <div class="content__inner">
                         <div data-target="div1">
                             <a>
-                                <img src="../assets/img/content01.svg" alt="눈">
+                                <img src="../../assets/img/content01.svg" alt="눈">
                                 <p>눈</p>
                             </a>
                         </div>
                         <div data-target="div1">
                             <a href="#">
-                                <img src="../assets/img/content02.svg" alt="간">
+                                <img src="../../assets/img/content02.svg" alt="간">
                                 <p>간</p>
                             </a>
                         </div>
                         <div data-target="div1">
                             <a href="#">
-                                <img src="../assets/img/content03.svg" alt="뼈">
+                                <img src="../../assets/img/content03.svg" alt="뼈">
                                 <p>뼈</p>
                             </a>
                         </div>
                         <div data-target="div1">
                             <a href="#">
-                                <img src="../assets/img/content04.svg" alt="임산부">
+                                <img src="../../assets/img/content04.svg" alt="임산부">
                                 <p>임산부</p>
                             </a>
                         </div>
                         <div data-target="div1">
                             <a href="#">
-                                <img src="../assets/img/content05.svg" alt="스트레스">
+                                <img src="../../assets/img/content05.svg" alt="스트레스">
                                 <p>스트레스</p>
                             </a>
                         </div>
                         <div data-target="div1">
                             <a href="#">
-                                <img src="../assets/img/content06.svg" alt="피부">
+                                <img src="../../assets/img/content06.svg" alt="피부">
                                 <p>피부</p>
                             </a>
                         </div>
                         <div data-target="div1">
                             <a href="#">
-                                <img src="../assets/img/content07.svg" alt="혈액순환">
+                                <img src="../../assets/img/content07.svg" alt="혈액순환">
                                 <p>혈액순환</p>
                             </a>
                         </div>
                         <div data-target="div1">
                             <a href="#">
-                                <img src="../assets/img/content08.svg" alt="소화기능">
+                                <img src="../../assets/img/content08.svg" alt="소화기능">
                                 <p>소화기능</p>
                             </a>
                         </div>
                         <div data-target="div1">
                             <a href="#">
-                                <img src="../assets/img/content09.svg" alt="호흡기능">
+                                <img src="../../assets/img/content09.svg" alt="호흡기능">
                                 <p>호흡기능</p>
                             </a>
                         </div>
                         <div data-target="div1">
                             <a href="#">
-                                <img src="../assets/img/content10.svg" alt="갱년기">
+                                <img src="../../assets/img/content10.svg" alt="갱년기">
                                 <p>갱년기</p>
                             </a>
                         </div>
@@ -338,7 +338,7 @@
     <footer id="footer">
         <div class="container">
             <div class="footlogo">
-                <img src="../assets/img/footlogo.svg" alt="로고이미지">
+                <img src="../../assets/img/footlogo.svg" alt="로고이미지">
             </div>
             <div class="footcont">
                 <ul>
@@ -365,13 +365,13 @@
         <div class="container">
             <!-- <div class="header">
                 <div class="c1">
-                    <img src="../assets/img/01-01.png" alt="아몬드">
+                    <img src="../../assets/img/01-01.png" alt="아몬드">
                 </div>
                 <div class="c2">
                     <h1>아몬드</h1>
                 </div>
                 <div class="c3">
-                    <img src="../assets/img/x.png" alt="">
+                    <img src="../../assets/img/x.png" alt="">
                 </div>
             </div>
             <div class="main">
@@ -401,7 +401,7 @@
         })
         
         function data(test){
-            fetch('../assets/json/food.json')
+            fetch('../../assets/json/food.json')
             .then(response => response.json())
             .then(data => {
                 arr = data.map((item, index) => {
@@ -471,7 +471,7 @@
                 show.push(`
                         <div class="list_wrap">
                             <div class="inner">
-                                <div class="list_img"><img src="../assets/img/${data.img}" alt="${data.name}"></div>
+                                <div class="list_img"><img src="../../assets/img/${data.img}" alt="${data.name}"></div>
                                     <div class="list_desc">
                                         <h3>${data.name}</h3>
                                         <p>${data.msg}</p>
@@ -499,13 +499,13 @@
                 show.push(`
                 <div class="header">
                     <div class="c1">
-                        <img src="../assets/img/${modallist[i].img}" alt="${modallist[i].name}">
+                        <img src="../../assets/img/${modallist[i].img}" alt="${modallist[i].name}">
                     </div>
                     <div class="c2">
                         <h1>${modallist[i].name}</h1>
                     </div>
                     <div class="c3">
-                        <img src="../assets/img/x.png" alt="">
+                        <img src="../../assets/img/x.png" alt="">
                     </div>
                 </div>
                 <div class="main">
