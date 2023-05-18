@@ -230,7 +230,7 @@
 <body>
     <header id="header">
         <div class="container">
-            <a href="../../main/main.html">
+            <a href="http://127.0.0.1:5500/html/main/main.html">
                 <img src="../../assets/img/logo.png" alt="로고이미지">
             </a>
             <ul>
@@ -390,7 +390,37 @@
         const list_title = document.querySelector(".list_title");
         const content__inner = document.querySelectorAll(".content__inner > div");
         const modal_container = document.querySelector("#modal .container");
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category');
         
+        document.addEventListener("DOMContentLoaded", ()=> {
+            data(category);
+            const targetElement = document.querySelector(".list");
+
+            const scrollToTarget = () => {
+                const windowHeight = window.innerHeight;
+                const targetOffset = targetElement.getBoundingClientRect().top;
+                const currentOffset = window.pageYOffset;
+                const difference = targetOffset - currentOffset;
+                const duration = 300;
+                const startTime = performance.now();
+                const animateScroll = (timestamp) => {
+                const timeElapsed = timestamp - startTime;
+                const progress = Math.min(timeElapsed / duration, 1);
+                const scrollOffset = currentOffset + difference * progress;
+                if (windowHeight > targetElement.offsetHeight) {
+                    window.scrollTo(0, scrollOffset);
+                } else {
+                    window.scrollTo(0, scrollOffset - windowHeight / 2);
+                }
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animateScroll);
+                }
+                };
+                requestAnimationFrame(animateScroll);
+            };
+            scrollToTarget();
+        });
 
         content__inner.forEach((el,i)=>{
             let arr =["eye","river","born","pregnant","stress","skin","blood","digestive","Breathing","climacterium"];

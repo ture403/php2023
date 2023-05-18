@@ -1,3 +1,17 @@
+<?php
+    include "../connect/connect.php";
+
+    $adminName = $_POST['youName'];
+    $adminEmail = $_POST['youEmail'];
+    $adminNick = $_POST['youNick'];
+    $adminPass = $_POST['youPass'];
+    $adminBirth = $_POST['youBirth'];
+    $adminPhone = $_POST['youPhone'];
+    $regtime = time();
+
+    $sql = "INSERT INTO adminmembers(adminEmail, adminName, adminNick, adminPass, adminBirth, adminPhone, adminDelete, adminRegtime, adminModtime) VALUES('$adminEmail', '$adminName', '$adminNick', '$adminPass', '$adminBirth', '$adminPhone', '1', '$regtime', '$regtime')";
+    $connect -> query($sql);
+?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>

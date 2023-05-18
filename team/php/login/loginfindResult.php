@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,12 +18,40 @@
             <div class="banner"><img src="../../assets/img/logo.png" alt="배너이미지"></div>
             <p>회원님의 아이디입니다.</p>
             <div class="login_form">
+                <?php
+                    include "../connect/connect.php";
+
+                    $youEmail = $_POST['youEmail'];
+                    $youName = $_POST['youName'];
+
+                    // echo $youEmail, $youName;
+
+                    $sql = "SELECT youID FROM member WHERE youName='$youName' AND youEmail='$youEmail'";
+                    $result = $connect -> query($sql);
+
+
+                    if($result){
+                        $count = $result -> num_rows;
+                        if($count == 0){
+                            echo "이름과 이메일을 다시 한 번 확인해 주세요. :3";
+                        } else {
+                            // 로그인 성공
+                            $memberInfo = $result -> fetch_array(MYSQLI_ASSOC);
+                            $youID = $memberInfo['youID'];
+                            // echo "<pre>";
+                            // var_dump($memberInfo);
+                            // echo "</pre>";
+                        //     echo $youID;
+                        }
+                    }
+
+                ?>
                 <form action="#" name="#" method="post">
                     <fieldset>
                         <legend class="blind">아이디</legend>
                         <div>
-                            <div class="email">아이디</div>
-                            <div class="findEmail">이메일주소 입니다.</div>
+                            <!-- <div class="email">아이디</div> -->
+                            <div class="findEmail"><?= $youID ?></div>
                         </div>
                         <div class="button_inner">
                             <button type="submit" class="button1">비밀번호 찾기</button>

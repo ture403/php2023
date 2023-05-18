@@ -20,7 +20,7 @@
             opacity: 0;
             box-shadow: 0 1px 15px rgba(116, 116, 116, 0.226);
             width: 1000px;
-            display: flex;
+            display: none;
             justify-content: center;
             background-color: #f6f6f6;
             border-radius : 10px;
@@ -41,6 +41,17 @@
             border-radius : 10px;
             z-index: 1000;
         }
+        .name__wrap > div {
+            position: relative;
+        }
+        .youCheck {
+            position: absolute;
+            right: -50px;
+            bottom: -30px;
+            display: inline-block;
+            border: 1px solid #000;
+            padding: 3px 7px;
+        }
     </style>
     
 </head>
@@ -56,42 +67,49 @@
             <img src="../../assets/img/logo.png" alt="로고이미지" class="logoimg">
             <h2>회원가입</h2>
             <div class="join__form">
-                <form action="joinSave.php" name="join" method="post">
+                <form action="joinSave.php" name="join" method="post" onsubmit="return joinChecks()">
                     <fieldset>
                         <legend class="blind">회원가입 영역</legend>
                         <div class="name__wrap">
                             <div class="name">
                                 <label for="youName" class="required">이름</label>
                                 <input type="text" id="youName" name="youName" placeholder="이름을 입력해주세요." class="inputStyle" required>
+                                <p class="msg" id="youNameComment"><!--이름은 한글만 사용할 수 있습니다.--></p>
                             </div>
                             <div class="nickname">
-                                <label for="nickName" class="required">닉네임</label>
-                                <input type="text" id="nickName" name="nickName" placeholder="사용하실 닉네임을 입력해주세요." class="inputStyle" required>
-                                <a href="#" onclick="nickChecking()">중복 확인</a>
+                                <label for="youNick" class="required">닉네임</label>
+                                <input type="text" id="youNick" name="youNick" placeholder="사용하실 닉네임을 입력해주세요." class="inputStyle" required>
+                                <a href="#c" onclick="nickChecking()">중복 확인</a>
+                                <p class="msg" id="youNickComment"><!--이미 사용중인 닉네임입니다.--></p>
                             </div>
                         </div>
                         <div class="you">
                             <label for="youID" class="required">아이디</label>
                             <input type="text" id="youID" name="youID" placeholder="아이디는 숫자와 영어만 입력이 가능합니다." class="inputStyle" required>
-                            <a href="#">아이디 중복검사</a>
+                            <a href="#c" onclick="IdChecking()">아이디 중복검사</a>
+                            <p class="msg" id="youIDComment"></p>
                         </div>
                         <div>
                             <label for="youPass" class="required">비밀번호</label>
                             <input type="password" id="youPass" name="youPass" placeholder="비밀번호를 입력해주세요." class="inputStyle" required>
+                            <p class="msg" id="youPassComment"><!--비밀번호는 특수기호를 하나 이상 포함하여야 합니다.--></p>
                         </div>
                         <div>
                             <label for="youPassC" class="required">비밀번호 확인</label>
                             <input type="password" id="youPassC" name="youPassC" placeholder="비밀번호를 다시한번 입력해주세요." class="inputStyle" required>
+                            <p class="msg" id="youPassCComment"><!--비밀번호가 일치하지 않습니다.--></p>
                         </div>
                         <div class="you">
                             <label for="youEmail" class="required">이메일</label>
                             <input type="email" id="youEmail" name="youEmail" placeholder="이메일을 입력해주세요." class="inputStyle" required>
-                            <a href="#" onclick="emailChecking()">아이디 중복검사</a>
+                            <a href="#c" onclick="emailChecking()">이메일 중복검사</a>
+                            <p class="msg" id="youEmailComment"><!--이미 사용중인 이메일입니다.--></p>
                         </div>
                         <div class="you">
                             <label for="youPhone" class="required">연락처</label>
                             <input type="text" id="youPhone" name="youPhone" placeholder="연락받으실 번호를 입력해주세요." class="inputStyle" required>
-                            <a href="#">아이디 중복검사</a>
+                            <a href="#c" onclick="phoneChecking()">연락처 중복검사</a>
+                            <p class="msg" id="youPhoneComment"><!--휴대폰 번호를 다시 입력해주세요.--></p>
                         </div>
                         <div class="age__wrap">
                             <div class="youage">
@@ -125,7 +143,7 @@
         </div>
     </main>
     <!-- //main -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <script>
         const checkAgree = document.querySelector(".checkagree__span");
         const termsAgree = document.querySelector(".terms__agree");
@@ -150,10 +168,15 @@
         document.querySelector(".close__btn").addEventListener("click", () => {
             document.querySelector(".modal").classList.remove("show");
         });
+    </script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
         let isEmailCheck = false;
         let isNickCheck = false;
-        
+        let isIDCheck =false;
+        let isphoneCheck =false;
+
         function emailChecking(){
             let youEmail = $("#youEmail").val();
             if(youEmail == null || youEmail == ''){
@@ -181,7 +204,6 @@
                 })
             }
         }
-
         function nickChecking(){
             let youNick = $("#youNick").val();
             if(youNick == null || youNick == ''){
@@ -209,8 +231,74 @@
                 })
             }
         }
-
+        function IdChecking(){
+            let youID = $("#youID").val();
+            if(youID == null || youID == ''){
+                $("#youIDComment").text("* 아이디을 입력해주세요!");
+            } else {
+                $.ajax({
+                    type : "POST",
+                    url: "joinCheck.php",
+                    data: {"youID": youID, "type": "isIDCheck"},
+                    dataType: "json",
+                    success : function(data){
+                        if(data.result == "good"){
+                            $("#youIDComment").text("* 사용 가능한 아이디 입니다");
+                            isIDCheck = true;
+                        } else {
+                            $("#youIDComment").text("* 이미 존재하는 아이디 입니다");
+                            isIDCheck = false;
+                        }
+                    },
+                    error : function(request, status, error){
+                        console.log("request" + request);
+                        console.log("status" + status);
+                        console.log("error" + error);
+                    }
+                })
+            }
+        }
+        function phoneChecking(){
+            let youPhone = $("#youPhone").val();
+            if(youPhone == null || youPhone == ''){
+                $("#youPhoneComment").text("* 연락받으실 연락처를 적어주세요.");
+            } else {
+                $.ajax({
+                    type : "POST",
+                    url: "joinCheck.php",
+                    data: {"youPhone": youPhone, "type": "isPhoneCheck"},
+                    dataType: "json",
+                    success : function(data){
+                        if(data.result == "good"){
+                            $("#youPhoneComment").text("* 사용 가능한 번호입니다.");
+                            isPhoneCheck = true;
+                        } else {
+                            $("#youPhoneComment").text("* 이미 등록된 번호입니다.");
+                            isPhoneCheck = false;
+                        }
+                    },
+                    error : function(request, status, error){
+                        console.log("request" + request);
+                        console.log("status" + status);
+                        console.log("error" + error);
+                    }
+                })
+            }
+        }
         function joinChecks(){
+            //아이디 유효성 검사
+            if($("#youID").val() == ''){
+                $("#youIDComment").text("* 이름을 입력해주세요");
+                $("#youID").focus();
+                return false;
+            }
+            let getyouID = RegExp(/^[a-z]+$/);
+            if(!getyouID.test($("#youID").val())){
+                $("#youIDComment").text("* ID는 영어만 사용 가능합니다.");
+                $("#youID").val('');
+                $("#youID").focus();
+                return false;
+            }
             //이름 유효성 검사
             if($("#youName").val() == ''){
                 $("#youNameComment").text("* 이름을 입력해주세요");
@@ -224,7 +312,6 @@
                 $("#youName").focus();
                 return false;
             }
-
             //이메일 유효성 검사
             if($("#youEmail").val() == ''){
                 $("#youEmailComment").text("* 이메일을 입력해주세요");
@@ -238,7 +325,6 @@
                 $("#youEmail").focus();
                 return false;
             }
-
             //닉네임 유효성 검사
             if($("#youNick").val() == ''){
                 $("#youNickComment").text("* 닉네임을 입력해주세요");
@@ -252,14 +338,12 @@
                 $("#youNick").focus();
                 return false;
             }
-
             //비밀번호 유효성 검사
             if($("#youPass").val() == ''){
                 $("#youPassComment").text("* 비밀번호를 입력해주세요");
                 $("#youPass").focus();
                 return false;
             }
-
             //8~20자 이내, 공백X, 영문, 숫자, 특수문자
             let getYouPass = $("#youPass").val();
             let getYouPassNum = getYouPass.search(/[0-9]/g);
@@ -275,34 +359,17 @@
                 $("#youPassComment").text("영문, 숫자, 특수문자를 혼합하여 입력해주세요!");
                 return false;
             }
-
             //비밀번호 확인 유효성 검사
             if($("#youPassC").val() == ''){
                 $("#youPassCComment").text("* 확인 비밀번호를 입력해주세요");
                 $("#youPassC").focus();
                 return false;
             }
-
             //비밀번호 일치 체크
             if($("#youPass").val() !== $("#youPassC").val()){
                 $("#youPassCComment").text("* 비밀번호가 일치하지 않습니다.");
                 return false;
             }
-
-            //생년월일 유효성 검사
-            if($("#youBirth").val() == ''){
-                $("#youBirthComment").text("* 생년월일를 입력해주세요");
-                $("#youBirth").focus();
-                return false;
-            }
-            let getYouBirth = RegExp(/^(19[0-9][0-9]|20\d{2})-(0[0-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/);
-            if(!getYouBirth.test($("#youBirth").val())){
-                $("#youBirthComment").text("* 생년월일 형식이 정확하지 않습니다. (YYYY-MM-DD)");
-                $("#youBirth").val('');
-                $("#youBirth").focus();
-                return false;
-            }
-
             //연락처 유효성 검사
             if($("#youPhone").val() == ''){
                 $("#youPhoneComment").text("* 휴대폰번호를 입력해주세요");
@@ -317,7 +384,6 @@
                 return false;
             }
         }
-
     </script>
 </body>
 </html>

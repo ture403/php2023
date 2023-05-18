@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-       @import url('https://webfontworld.github.io/sandbox/SBAggro.css');
+        @import url('https://webfontworld.github.io/sandbox/SBAggro.css');
         * {
             margin: 0;
             padding: 0;
@@ -19,35 +19,35 @@
             vertical-align: top;
             width: 100%;
         }
-        #Term_wrap {
+        #wrap {
             width: 600px;
             height: 780px;
             margin: 0 auto;
         }
-        #Term_header img{
+        #header img{
             width: 244px;
             height: 62px;
             padding: 50px 180px 50px;
         }
-        #Term_header h2{
+        #header h2{
             font-size: 25px;
             text-align: center;
             margin-bottom: 30px;
             line-height: 1.5;
             font-weight: 300;
         }
-        #Term_main {
+        #main {
             text-align: left;
             line-height: 1.5;
             position: relative;        
         }
-        #Term_main h3 {
+        #main h3 {
             font-size: 20px;
             font-weight: 300;
             color: #000000;
             margin-bottom: 10px;
         }     
-        #Term_main .Term_content{
+        #main .content{
             font-size: 16px;
             border: 1px solid #000;
             margin-bottom: 30px;
@@ -58,10 +58,10 @@
             height:180px;
             
         }
-        #Term_main input{
+        #main input{
             margin-bottom: 30px;
         }
-        #Term_main input {
+        #main .button {
             padding: 10px;
             background-color: #FFAD7F;
             color: #fff;
@@ -72,35 +72,33 @@
             font-size: 15px;
             font-weight: lighter;
         }
-        .boan {
-            
-        }
-        #Term_main .Term_content::-webkit-scrollbar {
+
+        .content::-webkit-scrollbar {
         width:10px;
         }
 
-        #Term_main .Term_content::-webkit-scrollbar-thumb {
+        .content::-webkit-scrollbar-thumb {
         height: 30%;
         background: #ff995f;
         border-radius: 10px;
         }
 
-        #Term_main .Term_content::-webkit-scrollbar-track {
+        .content::-webkit-scrollbar-track {
         background: #ffd2b8;
         }
     </style>
 </head>
 <body>
-    <div id="Term_wrap">
-        <header id="Term_header">
-            <img src="../../assets/img/logo.png" alt="">
+    <div id="wrap">
+        <header id="header">
+            <img src="../../assets/img/logo.png" alt="로고이미지">
             <h2>이 용 약 관</h2>
         </header>
-        <div id="Term_main">
+        <div id="main">
             <form method="post" action="form-action.html">
-                <div class="Term_cont1">
+                <div class="cont1">
                     <h3>개인정보 보호법</h3>
-                    <div class="Term_content">
+                    <div class="content">
                         본인은 [개인정보 보호법] 제15조 및 제17조에 따라 아래의 내용으로 개인정보를 수집, 이용 및 제공하는데 동의합니다.<br>
                         개인정보의 수집 및 이용에 관한 사항 <br>
                         - 수집하는 개인정보 항목 (이력서 양식 내용 일체) : 성명, 주민등록번호, 전화번호, 
@@ -117,9 +115,9 @@
                     </label>  
                 </div>
 
-                <div class="Term_cont2">
+                <div class="cont2">
                     <h3>이용약관</h3>
-                    <div class="Term_content">
+                    <div class="content">
                         제 1장 총칙<br>
                         제 1 조(목적)<br>
                         본 약관은 국가공간정보포털 웹사이트(이하 "국가공간정보포털")가 제공하는 모든 서비스(이하 "서비스")의 이용조건 및 절차, 회원과 국가공간정보포털의 권리, 의무, 책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다<br>
@@ -142,11 +140,11 @@
                     <label>
                         <input type="checkbox" name="color" value="#FFAD7F" required> 이용약관에 동의합니다.
                     </label>     
-                    <input class="boan" type="submit" value="동의합니다." class="button" required >
+                    <input type="submit" value="동의합니다." class="button" required > 
                 </div>
             </form>
         </div>
     </div>
-   
+
 </body>
 </html>

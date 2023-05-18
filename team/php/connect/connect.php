@@ -1,14 +1,14 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pw = "root";
-$db = "teamclass";
-$connect = new mysqli($host, $user, $pw, $db);
-$connect -> set_charset("utf-8");
+    $host = "localhost";
+    $user = "root";
+    $pw = "root";
+    $db = "teamclass";
+    $connect = new mysqli($host, $user, $pw, $db);
+    $connect -> set_charset("utf-8");
 
-// if(mysqli_connect_errno()){
-//     echo "database Connect false";
-// } else {
-//     echo "database Connect ture";
-// }
+    if(mysqli_connect_errno()){
+        echo "Database Connect false";
+    } else {
+        // echo "Database Connect True";
+    };
 ?>

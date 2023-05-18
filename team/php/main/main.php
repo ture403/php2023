@@ -1,3 +1,11 @@
+<?php 
+    include "../connect/connect.php";
+    include "../connect/session.php";
+
+    // echo "<pre>";
+    // var_dump($_SESSION);
+    // echo "</pre>";
+?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -235,7 +243,7 @@
             </div>
         </div>
     </main>
-    <?php include "../include/footer.php" ?>
+<?php include "../include/footer.php" ?>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script>
