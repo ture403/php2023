@@ -14,6 +14,9 @@
             color: #f00;
             font-size: 12px;
         }
+        .join__inner input {
+            box-sizing: border-box;
+        }
         .join__form button {
             float: right;
             text-align: center;
@@ -46,6 +49,37 @@
             text-align: center; 
             color: #B4B4B4;
         }
+        .join__form .text h2 {
+            font-size: 23px;
+            text-align: left;
+            font-weight: 500;
+        }
+        .join__form .text p {
+            font-weight: 300;
+            box-sizing: border-box;
+            width: 100%;
+            padding: 1em 10px;
+            background-color: #EBFFB3B2;
+        }
+        .pass {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .pass label {
+            width: 100%;
+        }
+        .pass input {
+            width: 77%;
+        }
+        .pass button {
+            width: 20%;
+            padding: 0 10px;
+        }
+        .pass button:hover{
+            cursor: pointer;
+            transform: scale(1.2);
+        }
     </style>
 </head>
 <body>
@@ -71,33 +105,27 @@
     <!-- header -->
     <main id="main" class="container">
         <div class="join__inner">
-            <h2 class="title">마이페이지(회원정보수정)</h2>
-            <form action="upload.php" method="POST"></form>
-                <label for="file-input">
-                    <img src="../../assets/img/User.png" alt="이미지" class="file_img">
-                </label>
-                <input type="file" id="file-input" style="display: none;">
-                <p class="file_img_desc">이미지 변경</p>              
-            </form>
+            <img src="../../assets/img/logo.png" alt="로고이미지" class="logoimg">
+            <h2>회원가입</h2>
             <div class="join__form">
-                <form action="#" name="#" method="post">
+                <form action="joinSave.php" name="join" method="post">
                     <fieldset>
                         <legend class="blind">회원가입 영역</legend>
                         <div class="name__wrap">
                             <div class="name">
                                 <label for="youName" class="required">이름</label>
                                 <input type="text" id="youName" name="youName" placeholder="이름을 입력해주세요." class="inputStyle" required>
-                                <p class="namecommet">이름은 수정이 불가능 합니다.</p>
                             </div>
                             <div class="nickname">
                                 <label for="nickName" class="required">닉네임</label>
                                 <input type="text" id="nickName" name="nickName" placeholder="사용하실 닉네임을 입력해주세요." class="inputStyle" required>
-                                <p class="nickcommet">닉네임은 수정이 불가능 합니다.</p>
+                                <a href="#">중복 확인</a>
                             </div>
                         </div>
-                        <div>
+                        <div class="you">
                             <label for="youID" class="required">아이디</label>
                             <input type="text" id="youID" name="youID" placeholder="아이디는 숫자와 영어만 입력이 가능합니다." class="inputStyle" required>
+                            <a href="#">아이디 중복검사</a>
                         </div>
                         <div>
                             <label for="youPass" class="required">비밀번호</label>
@@ -107,18 +135,20 @@
                             <label for="youPassC" class="required">비밀번호 확인</label>
                             <input type="password" id="youPassC" name="youPassC" placeholder="비밀번호를 다시한번 입력해주세요." class="inputStyle" required>
                         </div>
-                        <div>
+                        <div class="you">
                             <label for="youEmail" class="required">이메일</label>
                             <input type="email" id="youEmail" name="youEmail" placeholder="이메일을 입력해주세요." class="inputStyle" required>
+                            <a href="#">아이디 중복검사</a>
                         </div>
-                        <div>
+                        <div class="you">
                             <label for="youPhone" class="required">연락처</label>
                             <input type="text" id="youPhone" name="youPhone" placeholder="연락받으실 번호를 입력해주세요." class="inputStyle" required>
+                            <a href="#">아이디 중복검사</a>
                         </div>
                         <div class="age__wrap">
                             <div class="youage">
                                 <label for="youAge" class="required">연령대</label>
-                                <select name="#" id="#">
+                                <select name="youAge" id="youAge">
                                     <option value="10s">10 대</option>
                                     <option value="20s">20 대</option>
                                     <option value="30s">30 대</option>
@@ -128,16 +158,20 @@
                             </div>
                             <div class="gender">
                                 <label for="youGender" class="required">성별</label>
-                                <select name="#" id="#">
+                                <select name="youGender" id="youGender">
                                     <option value="woman">여자</option>
                                     <option value="man">남자</option>
                                 </select>
-                                <p class="nickcommet">성별은 수정이 불가능 합니다.</p>
                             </div>
                         </div>
+                        <label class="checkagree">
+                            <input type="checkbox" name="agree" value="0" disabled required><span class="checkagree__span"> 개인정보 제공동의 (필수)</span>
+                        </label>
+                        <button type="submit" class="btnStyle1">회원가입 완료</button>
                     </fieldset>
-                    <button type="submit">수정하기</button>
-                    <button type="submit">탈퇴하기</button>
+                    <div class="modal">
+                        <?php include "../include/joinTerms.php" ?>
+                    </div>
                 </form>
             </div>
         </div>
