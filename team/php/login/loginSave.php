@@ -13,7 +13,7 @@
     }
 
     // 데이터 조회
-    $sql = "SELECT memberID, youID, youName, youPass, youNick FROM member WHERE youID = '$youID' AND youPass = '$youPass'";
+    $sql = "SELECT memberID, youID, youName, youPass, youNick, youEmail, youPhone, youSex, youAge FROM member WHERE youID = '$youID' AND youPass = '$youPass'";
     $result = $connect -> query($sql);
     if($result){
         $count = $result -> num_rows;
@@ -32,6 +32,10 @@
             $_SESSION['youID'] = $memberInfo['youID'];
             $_SESSION['youName'] = $memberInfo['youName'];
             $_SESSION['youNick'] = $memberInfo['youNick'];
+            $_SESSION['youEmail'] = $memberInfo['youEmail'];
+            $_SESSION['youPhone'] = $memberInfo['youPhone'];
+            $_SESSION['youSex'] = $memberInfo['youSex'];
+            $_SESSION['youAge'] = $memberInfo['youAge'];
 
             Header("Location: ../main/main.php");
         }

@@ -1,15 +1,31 @@
+<?php 
+    include "../connect/connect.php";
+    include "../connect/session.php";
+
+    echo "<pre>";
+    var_dump($_SESSION);
+    echo "</pre>";
+
+    $youID = $_SESSION["youID"];
+    $youName = $_SESSION["youName"];
+    $youNick = $_SESSION["youNick"];
+    $youEmail = $_SESSION["youEmail"];
+    $youPhone = $_SESSION["youPhone"];
+    $youSex = $_SESSION["youSex"];
+    $youAge = $_SESSION["youAge"];
+?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입 페이지</title>
-
-    <!-- CSS -->
     <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+    <title>Only For You</title>
+
     <style>
-        
         .join__inner input {
             box-sizing: border-box;
         }
@@ -222,30 +238,11 @@
         .gender .desc {
             padding: 14px;
         }
-        
+        /
     </style>
 </head>
 <body>
-    <div id="skip">
-        <a href="#header">헤더 영역 바로가기</a>
-        <a href="#main">컨텐츠 영역 바로가기</a>
-        <a href="#footer">푸터 영역 바로가기</a>
-    </div>
-    <!-- //skip -->
-    <header id="header">
-        <div class="container">
-            <a href="../../main/main.html">
-                <img src="../../assets/img/logo.png" alt="로고이미지">
-            </a>
-            <ul>
-                <li><a href="#">카테고리</a></li>
-                <li><a href="../../board/board.html">요리방</a></li>
-                <li><a href="../../login/login.html">로그인</a></li>
-                <li><a href="#">마이페이지</a></li>
-            </ul>
-        </div>
-    </header>
-    <!-- header -->
+    <!-- <?php include "../include/header.php" ?> -->
     <main id="main" class="container">
         <div class="join__inner">
             <h2 class="title">마이페이지(회원정보수정)</h2>
@@ -262,13 +259,13 @@
                         <div class="name_nick">
                             <div class="name mb30">
                                 <h2 class="title mypage_font">이름</h2>
-                                <div class="desc inputStyle5" style="box-sizing:border-box">이름넣을곳</div>
+                                <div class="desc inputStyle5" style="box-sizing:border-box"><?=$youID;?></div>
                                 <p class="nickcommet">*아이디는 수정이 불가능 합니다.</p>
                             </div>
                             <form action="mypageNickUpload.php" method="POST" class="nick">
                                 <label for="youNick" class="required">닉네임</label>
                                 <div class="youNick_wrap">
-                                    <input type="text" id="youNick" name="youNick" placeholder="사용하실 닉네임을 입력해주세요." class="inputStyle5" required>
+                                    <input type="text" id="youNick" name="youNick" placeholder="현재 닉네임은 <?=$youNick?> 입니다." class="inputStyle5" required>
                                     <a href="#c" onclick="nickChecking()">중복 확인</a>
                                     <button class="Nickbutton" type="submit">닉네임변경</button>
                                 </div>
@@ -277,7 +274,7 @@
                         </div>
                         <div class="you">
                             <h2 class="title mypage_font">아이디</h2>
-                            <div class="desc inputStyle5" style="box-sizing:border-box;">이름넣을곳</div>
+                            <div class="desc inputStyle5" style="box-sizing:border-box;"><?=$youName;?></div>
                         </div>
                         <form action="mypagePassUpload.php" method="post" class="mb30">
                             <div class="mb30">
@@ -296,7 +293,7 @@
                         </form>
                         <div class="you">
                             <h2 class="title mypage_font">이메일</h2>
-                            <div class="desc inputStyle5" style="box-sizing:border-box;">이메일넣을곳</div>
+                            <div class="desc inputStyle5" style="box-sizing:border-box;"><?=$youEmail?></div>
                         </div>
                         <div class="phone">
                             <label for="youPhone" class="required">연락처</label>
@@ -311,7 +308,7 @@
                             <form action="mypageAgeUpload.php" method="post" class="youage">
                                 <label for="youAge" class="required">연령대</label>
                                 <div class="age_wrap">
-                                    <select name="#" id="#" class="inputStyle5">
+                                    <select name="#" id="#" class="inputStyle5" plac>
                                         <option value="10s">10 대</option>
                                         <option value="20s">20 대</option>
                                         <option value="30s">30 대</option>
@@ -323,7 +320,7 @@
                             </form>
                             <div class="gender">
                                 <h2 class="title mypage_font">성별</h2>
-                                <div class="desc inputStyle5" style="box-sizing:border-box">성별넣을곳</div>
+                                <div class="desc inputStyle5" style="box-sizing:border-box"><?=$youSex?></div>
                                 <p class="nickcommet">*성별은 수정이 불가능 합니다.</p>
                             </div>
                         </div>
@@ -333,35 +330,9 @@
             </div>
         </div>
     </main>
-    <!-- //main -->
-    <footer id="footer">
-        <div class="container">
-            <div class="footlogo">
-                <img src="../../assets/img/footlogo.svg" alt="로고이미지">
-            </div>
-            <div class="footcont">
-                <ul>
-                    <li><a href="#">회사소개</a></li>
-                    <li><a href="#">고객센터</a></li>
-                    <li><a href="#">이용약관</a></li>
-                    <li><a href="#">개인정보 처리방침</a></li>
-                </ul>
-                <ul>
-                    <li>주식회사 온리포유</li>
-                    <li>사업자 등록번호 : 00 - 00 - 0000</li>
-                    <li>대표 : 이유나</li>
-                </ul>
-                <ul>
-                    <li>대표번호 : 1588-0000</li>
-                    <li>이메일 : only@for.you</li>
-                    <li>주소 : 대한민국</li>
-                </ul>
-                <strong>copyright &copy; 2023 onlyforyou Inc All right reserved</strong>
-            </div>
-        </div>
-    </footer>
-    <!-- footer -->
-    <script>
+<?php include "../include/footer.php" ?>
+
+<script>
         function previewFile(event) {
         var fileInput = event.target;
         var previewImage = document.getElementById("preview-image");

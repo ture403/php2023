@@ -67,9 +67,6 @@ fieldset > div {
 .nickname label {
     width: 100%;
 }
-.nickname input {
-    width: 69%;
-}
 
 .nickname a {
     display: block;

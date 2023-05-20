@@ -68,6 +68,9 @@ label.required::after {
     content: ' *';
     color: #ff0000;
 }
+button{
+    cursor: pointer;
+}
 /* list style */
 .listStyle li {
     padding-left: 16px;
