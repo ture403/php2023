@@ -13,6 +13,19 @@
     $youPhone = $_SESSION["youPhone"];
     $youSex = $_SESSION["youSex"];
     $youAge = $_SESSION["youAge"];
+
+    $sql = "SELECT imgsrc FROM member WHERE memberID = '3'"; // 적절한 memberID 값을 사용하세요
+    $result = $connect->query($sql);
+
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $imgsrc = $row['imgsrc'];
+
+        // // 이미지 파일 경로가 있는 경우 이미지 출력
+        // if (!empty($imgsrc)) {
+        //     echo "<img src='../../assets/mypage/" . $imgsrc . "' alt='이미지' class='file_img'>";
+        // }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -243,6 +256,19 @@
         .gender .desc {
             padding: 14px;
         }
+        .exit{
+            display: block;
+            padding: 15px 0;
+            width: 20%;
+            height: 50px;
+            background-color: #ffad7f;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 10px;
+            text-align: center;
+            box-sizing: border-box;
+            float:right;
+        }
         .exit:hover{
             background-color: #f89e69;
             color: #fff;
@@ -254,11 +280,12 @@
     <main id="main" class="container">
         <div class="join__inner">
             <h2 class="title">마이페이지(회원정보수정)</h2>
-            <form action="mypageImgeUpload.php" method="POST"></form>
-                <label for="file-input">
-                    <img id="preview-image" src="../../assets/img/User.png" alt="이미지" class="file_img">
+            <form action="mypageImgeUpload.php" method="POST" onsubmit="return checkFile()" enctype="multipart/form-data">
+                <label for="blogFile">
+                    <?php if (!empty($imgsrc)) {echo "<img src='../../assets/mypage/" . $imgsrc . "' alt='이미지' class='file_img' id='blogFileUp'>";};
+                    ?>
                 </label>
-                <input type="file" id="file-input" style="display: none;" onchange="previewFile(event)">
+                <input type="file" id="blogFile" name="blogFile" style="display: none;" onchange="previewFile(event)">
                 <button type="submit" class="file_img_desc">이미지 변경</button>              
             </form>
             <div class="join__form">
@@ -336,7 +363,7 @@
                         </div>
                     </fieldset>
                     
-                    <button type="submit" class="exit">탈퇴하기</button>
+                    <a href="mypageWithdraw.php" class="exit">탈퇴하기</a>
             </div>
         </div>
     </main>
@@ -347,7 +374,7 @@
     //사진 클릭시 위에 이미지 보이기
     function previewFile(event) {
     let fileInput = event.target;
-    let previewImage = document.getElementById("preview-image");
+    let previewImage = document.getElementById("blogFileUp");
 
     let fileReader = new FileReader();
     fileReader.onload = function () {
@@ -355,6 +382,13 @@
     };
     
     fileReader.readAsDataURL(fileInput.files[0]);
+    }
+    function checkFile() {
+        let previewImage = document.getElementById("blogFile");
+        if (previewImage.files.length === 0) {
+            alert("파일을 첨부하지 않았습니다.");
+            return false;
+        }
     }
 </script>
 <script>

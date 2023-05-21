@@ -2,9 +2,9 @@
     include "../connect/connect.php";
     include "../connect/session.php";
 
-    echo "<pre>";
-    var_dump($_SESSION);
-    echo "</pre>";
+    // echo "<pre>";
+    // var_dump($_SESSION);
+    // echo "</pre>";
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -169,13 +169,13 @@
             <div class="swiper-scrollbar"></div> -->
         </div>
         <div class="container">
-            <div class="search">
+            <!-- <div class="search">
                 <h2>어느 부분이 고민이신가요 ?</h2>
                 <form action="#">
                     <input type="text" placeholder="고민이 되는 부분을 검색해 보세요" required>
                     <button type="submit"></button>
                 </form>
-            </div>
+            </div> -->
             <div class="content">
                 <h3>어떤 부분을 자세히 알고싶은가요 ?</h3>
                 <div class="content__inner">

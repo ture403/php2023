@@ -52,7 +52,7 @@
             </div>
             <div class="login_footer">
                 <ul class="listStyle">
-                    <li><a href="join.php">회원가입</a></li>
+                    <li><a href="../join/join.php">회원가입</a></li>
                     <li><a href="loginFind.php">아이디 찾기</a></li>
                     <li><a href="pwFind.php">비밀번호 찾기</a></li>
                 </ul>

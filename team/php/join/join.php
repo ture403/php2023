@@ -41,6 +41,12 @@
             border-radius : 10px;
             z-index: 1000;
         }
+        .join__form .inputStyle {
+            box-sizing:border-box;
+        }
+        .join__form a {
+            margin-left: 25px;
+        }
         .name__wrap > div {
             position: relative;
         }
@@ -51,6 +57,12 @@
             display: inline-block;
             border: 1px solid #000;
             padding: 3px 7px;
+        }
+        #youNick {
+            width: 66%;
+        }
+        .checkagree__span {
+            cursor: pointer;
         }
     </style>
     
@@ -78,7 +90,7 @@
                             </div>
                             <div class="nickname">
                                 <label for="youNick" class="required">닉네임</label>
-                                <input type="text" id="youNick" name="youNick" placeholder="사용하실 닉네임을 입력해주세요." class="inputStyle" required>
+                                <input type="text" id="youNick" name="youNick" placeholder="닉네임을 입력해주세요." class="inputStyle" required>
                                 <a href="#c" onclick="nickChecking()">중복 확인</a>
                                 <p class="msg" id="youNickComment"><!--이미 사용중인 닉네임입니다.--></p>
                             </div>

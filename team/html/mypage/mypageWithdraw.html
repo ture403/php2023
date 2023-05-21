@@ -44,13 +44,17 @@
             text-align: center;
             margin-bottom: 30px;
         }
-        button{
+        .withdraw_form button {
             width: 160px;
             height: 60px;
             background-color: #d9d9d9;
             cursor: pointer;
             text-align: center;
             border-radius: 10px;
+        }
+        .withdraw_form button:hover{
+            background-color: #f89e69;
+            color: #fff;
         }
         </style>
 </head>
@@ -74,11 +78,11 @@
                     <fieldset>
                         <div>
                             <label for="youPass" class="blind"></label>
-                            <input type="password" id="youPass" name="youPass" class="inputStyle"   placeholder="비밀번호를 입력해주세요." required>
+                            <input type="password" id="youPass" name="youPass" class="inputStyle5"   placeholder="비밀번호를 입력해주세요." required>
                         </div>
                         <div>
                             <label for=""></label>
-                            <input type="text" class="inputStyle" placeholder="탈퇴사유를 입력해주세요."  required>
+                            <input type="text" class="inputStyle5" placeholder="탈퇴사유를 입력해주세요."  required>
                         </div>
                         <button type="submit" class="button">탈퇴하기</button>
                     </fieldset>
