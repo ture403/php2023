@@ -181,61 +181,61 @@
                 <div class="content__inner">
                     <div>
                         <a href="#">
-                            <img src="../../assets/img/content01.svg" alt="눈">
+                            <img src="../../assets/img/content01.svg" alt="eye">
                             <p>눈</p>
                         </a>
                     </div>
                     <div>
                         <a href="#">
-                            <img src="../../assets/img/content02.svg" alt="간">
+                            <img src="../../assets/img/content02.svg" alt="river">
                             <p>간</p>
                         </a>
                     </div>
                     <div>
                         <a href="#">
-                            <img src="../../assets/img/content03.svg" alt="뼈">
+                            <img src="../../assets/img/content03.svg" alt="born">
                             <p>뼈</p>
                         </a>
                     </div>
                     <div>
                         <a href="#">
-                            <img src="../../assets/img/content04.svg" alt="임산부">
+                            <img src="../../assets/img/content04.svg" alt="pregnant">
                             <p>임산부</p>
                         </a>
                     </div>
                     <div>
                         <a href="#">
-                            <img src="../../assets/img/content05.svg" alt="스트레스">
+                            <img src="../../assets/img/content05.svg" alt="stress">
                             <p>스트레스</p>
                         </a>
                     </div>
                     <div>
                         <a href="#">
-                            <img src="../../assets/img/content06.svg" alt="피부">
+                            <img src="../../assets/img/content06.svg" alt="skin">
                             <p>피부</p>
                         </a>
                     </div>
                     <div>
                         <a href="#">
-                            <img src="../../assets/img/content07.svg" alt="혈액순환">
+                            <img src="../../assets/img/content07.svg" alt="blood">
                             <p>혈액순환</p>
                         </a>
                     </div>
                     <div>
                         <a href="#">
-                            <img src="../../assets/img/content08.svg" alt="소화기능">
+                            <img src="../../assets/img/content08.svg" alt="digestive">
                             <p>소화기능</p>
                         </a>
                     </div>
                     <div>
                         <a href="#">
-                            <img src="../../assets/img/content09.svg" alt="호흡기능">
+                            <img src="../../assets/img/content09.svg" alt="Breathing">
                             <p>호흡기능</p>
                         </a>
                     </div>
                     <div>
                         <a href="#">
-                            <img src="../../assets/img/content10.svg" alt="갱년기">
+                            <img src="../../assets/img/content10.svg" alt="climacterium">
                             <p>갱년기</p>
                         </a>
                     </div>
@@ -269,6 +269,41 @@
             //     el: '.swiper-scrollbar',
             // },
         });
+    </script>
+    <!-- get방식으로 넘기는 스크립트 -->
+    <script>
+            const a = document.querySelectorAll(".content__inner > div a");
+            const b = document.querySelectorAll(".content__inner > div > a >  img");
+            
+            // console.log(b)
+            a.forEach((el,index)=>{
+                el.addEventListener("click",(e)=>{
+                    e.preventDefault();
+                    const cate =b[index].alt;
+                    console.log(b)
+                    sendData(cate);
+                })
+            })
+
+            function sendData(cate) {
+            //데이터를 URL에 포함하여 새로운 URL 생성
+            var url = "../cate/cate.php?category=" + encodeURIComponent(cate);
+            
+            // 새로운 URL로 이동
+            window.location.href = url;
+            }
+
+            // 함수 실행
+            
+    </script>
+    <!-- 검색 스크립트 -->
+    <script>
+        
+            
+        
+
+
+        
     </script>
 </body>
 </html>
