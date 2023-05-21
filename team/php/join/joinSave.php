@@ -1,6 +1,6 @@
 <?php
     include "../connect/connect.php";
-
+    include "../connect/session.php";
     $youEmail = $_POST['youEmail'];
     $youID = $_POST['youID'];
     $youName = $_POST['youName'];

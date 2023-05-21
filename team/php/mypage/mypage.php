@@ -20,11 +20,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
-
     <title>Only For You</title>
-
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
         .join__inner input {
             box-sizing: border-box;
@@ -78,6 +78,7 @@
             font-weight: 500;
             margin-top: 0;
         }
+        
         .name_nick .nick{
             width: 100%;
         }
@@ -101,11 +102,12 @@
             background-color: #EBFFB3B2;
             width: 100%;
             border-radius: 5px;
-            padding: 15px 10px;
-            font-size: 12px;
+            padding: 15px !important;
+            font-size: 14px;
             height: 50px;
             border: 0;
             font-weight: 300;
+            text-align:left;
         }
         .mypage_font {
             margin-bottom: 5px;
@@ -169,6 +171,9 @@
             text-align: center;
             box-sizing: border-box;
             margin-left: 10px;
+        }
+        .youNick_wrap a:hover{
+            color:#fff;
         }
         .youNick_wrap .Nickbutton {
             width: 20% !important;
@@ -238,11 +243,14 @@
         .gender .desc {
             padding: 14px;
         }
-        /
+        .exit:hover{
+            background-color: #f89e69;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
-    <!-- <?php include "../include/header.php" ?> -->
+    <?php include "../include/header.php" ?>
     <main id="main" class="container">
         <div class="join__inner">
             <h2 class="title">마이페이지(회원정보수정)</h2>
@@ -260,9 +268,9 @@
                             <div class="name mb30">
                                 <h2 class="title mypage_font">이름</h2>
                                 <div class="desc inputStyle5" style="box-sizing:border-box"><?=$youID;?></div>
-                                <p class="nickcommet">*아이디는 수정이 불가능 합니다.</p>
+                                <p class="nickcommet">*이름은 수정이 불가능 합니다.</p>
                             </div>
-                            <form action="mypageNickUpload.php" method="POST" class="nick">
+                            <form action="mypageNickUpload.php" method="POST" class="nick" onsubmit="return joinChecksNick()">
                                 <label for="youNick" class="required">닉네임</label>
                                 <div class="youNick_wrap">
                                     <input type="text" id="youNick" name="youNick" placeholder="현재 닉네임은 <?=$youNick?> 입니다." class="inputStyle5" required>
@@ -275,8 +283,9 @@
                         <div class="you">
                             <h2 class="title mypage_font">아이디</h2>
                             <div class="desc inputStyle5" style="box-sizing:border-box;"><?=$youName;?></div>
+                            <p class="nickcommet">*아이디는 수정이 불가능 합니다.</p>
                         </div>
-                        <form action="mypagePassUpload.php" method="post" class="mb30">
+                        <form action="mypagePassUpload.php" method="post" class="mb30" onsubmit="return joinChecksPass()">
                             <div class="mb30">
                                 <label for="youPass" class="required">비밀번호</label>
                                 <input type="password" id="youPass" name="youPass" placeholder="비밀번호를 입력해주세요." class="inputStyle5 pl" required>
@@ -294,21 +303,22 @@
                         <div class="you">
                             <h2 class="title mypage_font">이메일</h2>
                             <div class="desc inputStyle5" style="box-sizing:border-box;"><?=$youEmail?></div>
+                            <p class="nickcommet">*이메일은 수정이 불가능 합니다.</p>
                         </div>
-                        <div class="phone">
-                            <label for="youPhone" class="required">연락처</label>
+                        <form action="mypagePhoneUpload.php" method="post" class="phone mb30" onsubmit="return joinChecksPhone()">
+                            <label for="youPhone" class="required mypage_font">연락처</label>
                             <div class="phone_inner">
-                                <input type="text" id="youPhone" name="youPhone" placeholder="연락받으실 번호를 입력해주세요." class="inputStyle5" required>
+                                <input type="text" id="youPhone" name="youPhone" placeholder="수정할 번호를 입력해주세요." class="inputStyle5" required>
                                 <a href="#c" onclick="phoneChecking()">연락처 중복검사</a>
                                 <button type="submit">변경</button>
                             </div>
                             <p class="msg" id="youPhoneComment"><!--휴대폰 번호를 다시 입력해주세요.--></p>
-                        </div>
+                        </form>
                         <div class="age__wrap">
                             <form action="mypageAgeUpload.php" method="post" class="youage">
                                 <label for="youAge" class="required">연령대</label>
                                 <div class="age_wrap">
-                                    <select name="#" id="#" class="inputStyle5" plac>
+                                    <select name="youAge" id="youAge" class="inputStyle5" >
                                         <option value="10s">10 대</option>
                                         <option value="20s">20 대</option>
                                         <option value="30s">30 대</option>
@@ -326,26 +336,28 @@
                         </div>
                     </fieldset>
                     
-                    <button type="submit">탈퇴하기</button>
+                    <button type="submit" class="exit">탈퇴하기</button>
             </div>
         </div>
     </main>
+    
 <?php include "../include/footer.php" ?>
 
 <script>
-        function previewFile(event) {
-        var fileInput = event.target;
-        var previewImage = document.getElementById("preview-image");
+    //사진 클릭시 위에 이미지 보이기
+    function previewFile(event) {
+    let fileInput = event.target;
+    let previewImage = document.getElementById("preview-image");
 
-        var fileReader = new FileReader();
-        fileReader.onload = function () {
-            previewImage.src = fileReader.result;
-        };
-        
-        fileReader.readAsDataURL(fileInput.files[0]);
+    let fileReader = new FileReader();
+    fileReader.onload = function () {
+        previewImage.src = fileReader.result;
+    };
+    
+    fileReader.readAsDataURL(fileInput.files[0]);
     }
-    </script>
-    <script>
+</script>
+<script>
         function nickChecking(){
             let youNick = $("#youNick").val();
             if(youNick == null || youNick == ''){
@@ -380,7 +392,7 @@
             } else {
                 $.ajax({
                     type : "POST",
-                    url: "joinCheck.php",
+                    url: "../join/joinCheck.php",
                     data: {"youPhone": youPhone, "type": "isPhoneCheck"},
                     dataType: "json",
                     success : function(data){
@@ -398,6 +410,71 @@
                         console.log("error" + error);
                     }
                 })
+            }
+        }
+        
+        function joinChecksNick(){
+            //닉네임 유효성 검사
+            if($("#youNick").val() == ''){
+                $("#youNickComment").text("* 닉네임을 입력해주세요");
+                $("#youNick").focus();
+                return false;
+            }
+            let getYouNick = RegExp(/^[가-힣|0-9]+$/);
+            if(!getYouNick.test($("#youNick").val())){
+                $("#youNickComment").text("* 닉네임은 한글 또는 숫자만 가능합니다.");
+                $("#youNick").val('');
+                $("#youNick").focus();
+                return false;
+            }
+        }
+        function joinChecksPass(){
+             //비밀번호 유효성 검사
+            if($("#youPass").val() == ''){
+                $("#youPassComment").text("* 비밀번호를 입력해주세요");
+                $("#youPass").focus();
+                return false;
+            }
+            //8~20자 이내, 공백X, 영문, 숫자, 특수문자
+            let getYouPass = $("#youPass").val();
+            let getYouPassNum = getYouPass.search(/[0-9]/g);
+            let getYouPassEng = getYouPass.search(/[a-z]/ig);
+            let getYouPassSpe = getYouPass.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+            if(getYouPass.length < 8 || getYouPass.length > 20){
+                $("#youPassComment").text("8자리 ~ 20자리 이내로 입력해주세요~");
+                return false;
+            } else if (getYouPass.search(/\s/) != -1){
+                $("#youPassComment").text("비밀번호는 공백없이 입력해주세요!");
+                return false;
+            } else if (getYouPassNum < 0 || getYouPassEng < 0 || getYouPassSpe < 0 ){
+                $("#youPassComment").text("영문, 숫자, 특수문자를 혼합하여 입력해주세요!");
+                return false;
+            }
+            //비밀번호 확인 유효성 검사
+            if($("#youPassC").val() == ''){
+                $("#youPassCComment").text("* 확인 비밀번호를 입력해주세요");
+                $("#youPassC").focus();
+                return false;
+            }
+            //비밀번호 일치 체크
+            if($("#youPass").val() !== $("#youPassC").val()){
+                $("#youPassCComment").text("* 비밀번호가 일치하지 않습니다.");
+                return false;
+            }
+        }
+        function joinChecksPhone(){
+             //연락처 유효성 검사
+            if($("#youPhone").val() == ''){
+                $("#youPhoneComment").text("* 휴대폰번호를 입력해주세요");
+                $("#youPhone").focus();
+                return false;
+            }
+            let getYouPhone = RegExp(/^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/);
+            if(!getYouPhone.test($("#youPhone").val())){
+                $("#youPhoneComment").text("* 휴대폰번호가 정확하지 않습니다. (000-0000-0000)");
+                $("#youPhone").val('');
+                $("#youPhone").focus();
+                return false;
             }
         }
     </script>
