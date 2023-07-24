@@ -32,5 +32,5 @@ http://ture403.dothome.co.kr/php/main/main.php <br> 싸이트에 들어가서 �
 + php 이해
 + MYSQL 이해
 + 홈페이지 구조 이해
-+ 협동심 커뮤니케이션
+
 
