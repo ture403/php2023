@@ -1,6 +1,6 @@
 # web2023-PHP
 
-<img src="/html/assets/img/Frame 4.png"  width="700" height="370">
+<img src="/html/assets/img/Frame 4.png"  width="1000" height="500">
 VIEW SITE : http://ture403.dothome.co.kr/php/main/main.php
 
 MAMP를 통해서 PHP,MYSQL 를 사용해서 블로그 싸이트를 만들었습니다.
@@ -25,5 +25,12 @@ POST 방식과 GET 방식: POST 방식은 데이터를 HTTP 요청 본문에 담
 ---
 http://ture403.dothome.co.kr/php/main/main.php <br> 싸이트에 들어가서 구성 및 사용을 확인해보세요 
 
+# 프로젝트 목적
 
+---
+
++ php 이해
++ MYSQL 이해
++ 홈페이지 구조 이해
++ 협동심 커뮤니케이션
 
